@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zimug</groupId>
+    <groupId>com.kxj</groupId>
     <artifactId>dongbb-cloud</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
@@ -12,8 +12,9 @@
     <modules>
         <module>aservice-rbac</module>
         <module>aservice-sms</module>
-        <module>zimug-web-spring-boot-starter</module>
+        <module>micro-service-web-spring-boot-starter</module>
         <module>dbcloud-persistence-spring-boot-starter</module>
+        <module>micro-service-server-eureka</module>
     </modules>
 
     <properties>
@@ -33,12 +34,12 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>com.zimug.dongbb.cloud</groupId>
-                <artifactId>zimug-web-spring-boot-starter</artifactId>
+                <groupId>com.kxj.dongbb.cloud</groupId>
+                <artifactId>micro-service-web-spring-boot-starter</artifactId>
                 <version>1.0</version>
             </dependency>
             <dependency>
-                <groupId>com.zimug.dongbb.cloud</groupId>
+                <groupId>com.kxj.dongbb.cloud</groupId>
                 <artifactId>dbcloud-persistence-spring-boot-starter</artifactId>
                 <version>1.0</version>
             </dependency>
@@ -53,6 +54,15 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>1.2.10</version>
+            </dependency>
+
+            <!-- 添加Spring Cloud Eureka组件 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR3</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
