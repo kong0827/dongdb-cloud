@@ -93,22 +93,39 @@ public class SysuserService {
         sysUserMapper.deleteByPrimaryKey(userId);
     }
 
+<<<<<<< HEAD
     public void pwdreset(Integer userId) {
+=======
+    public void pwdReset(Integer userId) {
+>>>>>>> 17169467164a37fb99d33b842322bf1edbf474f4
         if (userId == null) {
             throw new CustomException(CustomExceptionType.USER_INPUT_ERROR,
                     "重置密码必须带主键");
         } else {
+<<<<<<< HEAD
             SysUser sysUser = sysUserMapper.selectByPrimaryKey(userId);
 
             //去数据库sys_config表加载用户初始化默认密码，key为user.init.password
             String defaultPwd = dbLoadSysConfig.getConfigItem("user.init.password");
             sysUser.setPassword(passwordEncoder.encode(defaultPwd));
+=======
+            SysUser sysUser = new SysUser();
+            sysUser.setId(userId);
+
+            //去数据库sys_config表加载用户初始化默认密码，key为user.init.password
+            String defaultPassword = dbLoadSysConfig.getConfigItem("user.init.password");
+            sysUser.setPassword(passwordEncoder.encode(defaultPassword));
+>>>>>>> 17169467164a37fb99d33b842322bf1edbf474f4
 
             //更新该用户密码为默认初始化密码
             sysUserMapper.updateByPrimaryKeySelective(sysUser);
 
             //看上去就像是本地调用smsService接口方法，实际是发送http请求调用远程服务
+<<<<<<< HEAD
             smsFeignClient.send(sysUser.getPhone(), "你好，你的密码已重置" + defaultPwd);
+=======
+            smsFeignClient.send(sysUser.getPhone(), "你好，你的密码已重置" + defaultPassword);
+>>>>>>> 17169467164a37fb99d33b842322bf1edbf474f4
         }
     }
 

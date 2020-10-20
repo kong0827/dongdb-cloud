@@ -60,7 +60,7 @@ public class SysuserController {
 
   @PostMapping(value = "/pwd/reset")
   public AjaxResponse pwdreset(@RequestParam Integer userId) {
-    sysuserService.pwdreset(userId);
+    sysuserService.pwdReset(userId);
     return AjaxResponse.success("重置密码成功!");
   }
 

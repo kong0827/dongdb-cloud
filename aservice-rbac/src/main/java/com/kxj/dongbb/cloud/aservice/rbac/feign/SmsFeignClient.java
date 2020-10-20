@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author xiangjin.kong
  * @date 2020/9/30 11:43
  */
+<<<<<<< HEAD
 @FeignClient("ASERVICE-SMS")
+=======
+@FeignClient(value = "aservice-sms")
+>>>>>>> 17169467164a37fb99d33b842322bf1edbf474f4
 public interface SmsFeignClient {
 
     @PostMapping(value = "/sms/send")
