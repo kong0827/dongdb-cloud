@@ -30,7 +30,7 @@ public class RestTemplateTest {
     private RestTemplate restTemplate;
 
     @Test
-    void httpPostForObject() {
+    void httpPostForObjectTest() {
         // 发送远程http请求的url
         String url = "http://localhost:8402/sms/send";
         // 发送到远程服务的参数
@@ -44,7 +44,7 @@ public class RestTemplateTest {
     }
 
     @Test
-    void httpPostForEntity() {
+    void httpPostForEntityTest() {
         String url = "http://localhost:8402/sms/send";
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
         params.add("phoneNo", "123123124124");
@@ -62,5 +62,16 @@ public class RestTemplateTest {
         for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
             System.out.println(entry.getKey() + ":" + entry.getValue());
         }
+    }
+
+    @Test
+    void loadBalancedHttpPostTest() {
+        String url = "http://ASERVICE-SMS/sms/send";
+        //发送到远程服务的参数
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
+        params.add("phoneNo", "12312341243");
+        params.add("content", "RestTemplate测试远程负载均衡服务调用");
+        AjaxResponse ajaxResponse = restTemplate.postForObject(url, params, AjaxResponse.class);
+        System.out.println(ajaxResponse);
     }
 }

@@ -1,5 +1,6 @@
 package com.kxj.dongbb.cloud.aservice.rbac.config;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.ribbon.RibbonClientHttpRequestFactory;
 import org.springframework.cloud.netflix.ribbon.SpringClientFactory;
 import org.springframework.context.annotation.Bean;
@@ -20,9 +21,10 @@ public class ContextConfig {
 
     /**
      * 默认实现，实现与urlConnection是一样的底层实现
-     * @return
+     * @LoadBalanced 实现远程服务调用的负载均衡
      */
     @Bean
+    @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
